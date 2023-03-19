@@ -5,6 +5,8 @@
   - [Merge vs Rebase vs Cherry Picking](#merge-vs-rebase-vs-cherry-picking)
     - [Merge](#merge)
     - [Rebase](#rebase)
+      - [Editing](#editing)
+      - [Squashing](#squashing)
     - [Cherry picking](#cherry-picking)
   - [Interactive Staging](#interactive-staging)
   - [Recover deleted commits](#recover-deleted-commits)
@@ -45,6 +47,16 @@ Many people are **scared** of `rebase`, they hear the term `it re-writes the his
 Anyway, rebasing gives you the ability to edit previous commits, that is all, yes you can get it wrong, but so too can you get it wrong fixing merge conflicts with `merge`. The plus side is you have a nice neat termporally linear commit history, no extraneous, I forgot to do this, so have not done so commits, you just updated the commit you should have done what your forgot to do in the first place as if you hadn't forgot. The thing to remember is, if anyone has pulled your code, before you pushed cahnges using rebase, you have to tell them to remove their copy of your old branch and re-check it out, it's very unlikely they are also making changes to that same branch. So the main trouble mostly comes around having got the commits into the `master` branch and then looking to rebase, that is a big no-no, in this case, just add a new commit.
 
 This is kinda idealised as there is no code-base that is perfect, things will get forgotten and it won't be for another week they are realized, therefore extra commits are needed. Rebase is mostly good for you developing your feature branch, prior to it being merged into master.
+
+The 2 primary rebasing options I tend to use are `editing` and `squashing`, I'll talk about them separately.
+
+#### Editing
+
+This is my primary reason for using **rebase**, it allows me to edit an existing commit, to add/remove/update the contents, or the message itself.
+
+#### Squashing
+
+I use this less, but it can be useful, if I have 2 or more smaller commits that really are one thing, then I can squash them down into however many I deem to be the right number.
 
 ### Cherry picking
 
