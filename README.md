@@ -11,6 +11,7 @@
   - [Interactive Staging](#interactive-staging)
   - [Recover deleted commits](#recover-deleted-commits)
   - [Hooks](#hooks)
+  - [Tips](#tips)
   - [References](#references)
 
 ## How to write a good commit message
@@ -75,6 +76,10 @@ So, if we have a big bucket and nothing committed is never actually deleted, how
 ## Hooks
 
 **Hooks** are basically scripts that run on specific GIT commands e.g. `add`, `pre-push`, `push`, `post-push` etc. They are mostly client-side, which means they are specific to each individual, you can't share hooks, other than saying, here is a hook, add it to this file in your git repository. There are some tools that provide server-side hooks, but I don't know much about them, I've never used them. What use are hooks, well, they can protect devs from themselves, thing of a hook that runs tests on the `pre-push`, so you run `git push`, the tests are run, you notice you've just broken a test, so you can fix it without looking silly in front of everyone else. There are many possibilities, if you can script it, it can be done, we had one that validated metadata files against the JSON schema in our dataset registry, that was run before committing, for instance. Hooks can be written in any scripting language and be reference from the hook file, under `$PROJ_ROOT/.git/hooks/` directory, or you can inline the script code, if it is a bash script.
+
+## Tips
+
+Often I find myself working on a branch and I get asked to look at a PR. I used to `stash` that code, so as to come back to it after I've checked out the PR branch and looked at it. I tended to lose code accidentally, maybe I'd cleared the stash accidentally, also, I'd sometimes get merge conflicts, especially after rebasing master into my branch. What I tend to do now is commit the code, with the term `WIP` in the message, I don't bother writing a message, as it might just get thrown away. That way, it is committed, so retreivable via `reflog`, it's easy to get back to and I can keep updating it with minor changes until I am finished with the feature. I then `reset` the commit, so I can tidy up the code and commit it in stages, if necessary.
 
 ## References
 
